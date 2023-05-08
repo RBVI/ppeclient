@@ -16,14 +16,14 @@ Building
 --------
 
 To build ``ppeclient``, a UNIX-style build enviroment is needed along with a
-Java application runner (called ``java``).  Then run:
+Java application runner (called ``java``).  Then run::
 
-        ``make client``
+        make client
 
 That will create the ``client`` subdirectory with all of Python source code.  Next,
-switch to the ``client`` subdirectory and run:
+switch to the ``client`` subdirectory and run::
 
-        ``python setup.py install``
+        python setup.py install
 
 To install the ``ppeclient`` package.
 
@@ -31,7 +31,7 @@ To install the ``ppeclient`` package.
 Example Use
 -----------
 
-.. code: python
+::
 
         from ppeclient import Configuration, ApiClient, UsersApi
 
@@ -47,10 +47,6 @@ Example Use
 
         print(api.get_user(USERNAME, PASSWORD, DOMAIN, 'user2@example.com'))
 
-
-----------
-References
-----------
 
 .. _OpenAPI: https://www.openapis.org/
 .. _Swagger Open Source: https://swagger.io/tools/open-source/
