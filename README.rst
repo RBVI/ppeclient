@@ -12,9 +12,10 @@ project.
 
 Note:
 
-At this time, 9 May 2023, the OpenAPI_ description of the interface is buggy.
-It has some incorrect data types, and some incorrect return value descriptions.
-Use at your own risk.
+   *At this time, 9 May 2023, the OpenAPI_ description of the interface from
+   Proofpoint is buggy.
+   It has some incorrect data types, and some incorrect return value descriptions.
+   Use at your own risk.*
 
 --------
 Building
