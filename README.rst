@@ -10,6 +10,11 @@ ppeclient is Python client that is generated from the OpenAPI description by
 a prebuilt `swagger-codegen-cli v3`_.  Which is part of the `Swagger Open Source`_
 project.
 
+Note:
+
+At this time, 9 May 2023, the OpenAPI_ description of the interface is buggy.
+It has some incorrect data types, and some incorrect return value descriptions.
+Use at your own risk.
 
 --------
 Building
