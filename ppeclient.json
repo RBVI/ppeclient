@@ -3374,6 +3374,9 @@
                     },
                     {
                         "$ref": "#/components/parameters/domain"
+                    },
+                    {
+                        "$ref": "#/components/parameters/user"
                     }
                 ],
                 "responses": {
