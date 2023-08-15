@@ -44,8 +44,8 @@ install:
 
 
 clean:
-	rm -rf client
+	rm -rf client ${NAME}.config
 
 distclean: clean
-	rm -f ${CODEGEN_CLI} ${NAME}.config docs
+	rm -f ${CODEGEN_CLI} docs
 
