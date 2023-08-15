@@ -32,6 +32,17 @@ ${NAME}.config: config.in Makefile
 ${CODEGEN_CLI}:
 	curl ${CODEGEN_CLI_URL} > ${CODEGEN_CLI}
 
+rhel-prereqs:
+	dnf install -y python3-wheel python3-urllib3 python3-certifi python3-six python3-dateutil
+	
+python-prereqs:
+	python3 -m pip install wheel urllib3 certifi six python-dateutil
+
+install:
+	echo '"make wheel" first'
+	python3 -m pip install client/dist/${NAME}-${VERSION}-py3-none-any.whl
+
+
 clean:
 	rm -rf client
 
