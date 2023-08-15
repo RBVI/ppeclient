@@ -1,5 +1,5 @@
 NAME = ppeclient
-VERSION = 1.0
+VERSION = $(shell stat --format "%Z" docs)
 
 PPECLIENT_SWAGGER_URL = "https://us1.proofpointessentials.com/apidocs/apidocs/docs"
 
@@ -10,10 +10,10 @@ CODEGEN_CLI_URL = ${CODEGEN_CLI_REPO}/${CODEGEN_CLI_VERSION}/${CODEGEN_CLI}
 
 
 # Must have Java installed and on PATH
-client: ${CODEGEN_CLI} ${NAME}.json ${NAME}.config
+client: ${CODEGEN_CLI} docs ${NAME}.config
 	rm -rf $@
 	java -jar ${CODEGEN_CLI} generate \
-		--input-spec ${NAME}.json \
+		--input-spec docs \
 		--config ${NAME}.config \
 		--lang python \
 		--output $@
@@ -21,10 +21,9 @@ client: ${CODEGEN_CLI} ${NAME}.json ${NAME}.config
 wheel: client
 	cd client && python3 setup.py $(SETUP_ARGS) bdist_wheel
 
-${NAME}.json:
-	curl ${PPECLIENT_SWAGGER_URL} > ${NAME}.json
-	# "int" is not an OpenAPI data type, but "integer" is
-	sed -i s/\"int\"/\"integer\"/ ${NAME}.json
+docs:
+	# want to use timestamping, but it doesn't work
+	wget --timestamping ${PPECLIENT_SWAGGER_URL}
 
 ${NAME}.config: config.in Makefile
 	sed -e 's/VERSION/$(VERSION)/' \
@@ -37,5 +36,5 @@ clean:
 	rm -rf client
 
 distclean: clean
-	rm -f ${CODEGEN_CLI} ${NAME}.config ${NAME}.json
+	rm -f ${CODEGEN_CLI} ${NAME}.config docs
 
